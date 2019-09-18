@@ -1,7 +1,7 @@
 <template>
   <div id="calculator">
     <h1 id="outputBox">
-      {{ currentNumber }}
+      {{ tempNumber ? tempNumber : currentNumber }}
     </h1>
     <div class="row">
     <div class="calculatorNum col-sm-3 btn" @click="clear">C</div>
@@ -45,7 +45,8 @@ export default {
 return {
     currentNumber: "0",
     operatorType: "",
-    previousNumber: "0"
+    previousNumber: "0",
+    tempNumber: null
   };
 },
 methods: {
@@ -56,6 +57,7 @@ methods: {
     else{
       this.currentNumber = this.currentNumber + number;
     }
+    this.tempNumber = null;
   },
   sign(){
     if(this.currentNumber[0] === "-"){
@@ -69,11 +71,13 @@ methods: {
     this.previousNumber = "0";
     this.currentNumber = "0";
     this.operatorType = "";
+    this.tempNumber = null;
   },
   operation(operationType){
     this.operatorType = operationType;
     this.previousNumber = this.currentNumber;
     this.currentNumber = "0";
+    this.tempNumber = this.previousNumber;
   },
   evaluate(){
     if(this.operatorType === "times"){
@@ -96,6 +100,7 @@ methods: {
 
     this.previousNumber = "0";
     this.operatorType = "";
+    this.tempNumber = null;
     this.currentNumber = this.currentNumber.toString();
   }
 }
