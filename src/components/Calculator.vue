@@ -1,5 +1,6 @@
 <template>
-  <div id="calculator">
+  <div class="calculator">
+  <div id="calculatorBox">
     <h1 id="outputBox">
       {{ tempNumber ? tempNumber : currentNumber }}
     </h1>
@@ -31,6 +32,7 @@
     <div class="calculatorNum col-sm-6 btn" @click="append('0')">0</div>
     <div class="calculatorNum col-sm-3 btn" @click="append('.')">.</div>
     <div class="operator col-sm-3 btn" @click="evaluate">=</div>
+  </div>
   </div>
   </div>
 </template>
@@ -109,7 +111,7 @@ methods: {
 
 
 <style scoped>
-#calculator{
+#calculatorBox{
   width: 300px;
   margin: 0 auto;
 }
